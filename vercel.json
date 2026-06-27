@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/image-edit.js": {
+      "maxDuration": 120
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/image-edit",
+      "destination": "/api/image-edit.js"
+    }
+  ]
+}
