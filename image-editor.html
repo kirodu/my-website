@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI招生海报改稿器｜睿睿增长工作室</title>
+    <meta
+      name="description"
+      content="上传旧海报或课程图，填写课程类型和招生需求，免费生成 1 次适合小红书、朋友圈、公众号或抖音图文的招生海报改版图。"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./image-editor.css" />
+  </head>
+  <body>
+    <header class="editor-header">
+      <a class="brand" href="./index.html" aria-label="返回官网">
+        <span class="brand-mark">R</span>
+        <span>睿睿增长工作室</span>
+      </a>
+      <a class="header-link" href="./diagnosis.html">先做官网诊断</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">AI Image Edit · Lead Magnet</p>
+        <h1>免费改一张你的招生海报</h1>
+        <p>
+          上传旧海报、课程截图或课堂照片，我会用 AI 帮你改成更适合招生获客的视觉。第一版适合课程招生、小红书封面和朋友圈海报。
+        </p>
+        <div class="hero-tags">
+          <span>先留联系方式</span>
+          <span>每人免费 1 次</span>
+          <span>约 60-90 秒生成</span>
+        </div>
+      </section>
+
+      <section class="editor-shell" aria-labelledby="form-title">
+        <form id="imageEditForm" class="editor-form">
+          <div class="form-heading">
+            <p class="eyebrow">Step 01</p>
+            <h2 id="form-title">填写改稿需求</h2>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span>姓名/称呼</span>
+              <input name="leadName" type="text" placeholder="例如：睿睿" autocomplete="name" />
+            </label>
+            <label>
+              <span>微信或手机号 <b>*</b></span>
+              <input name="contact" type="text" placeholder="用于领取结果和继续优化" autocomplete="tel" required />
+            </label>
+          </div>
+
+          <label>
+            <span>课程类型</span>
+            <input name="courseType" type="text" placeholder="例如：成人夜校、母婴护理、AI办公、学历提升" />
+          </label>
+
+          <div class="field-grid">
+            <label>
+              <span>目标平台</span>
+              <select name="platform">
+                <option>小红书</option>
+                <option>朋友圈</option>
+                <option>公众号</option>
+                <option>抖音图文</option>
+              </select>
+            </label>
+            <label>
+              <span>改稿模板</span>
+              <select name="template">
+                <option>招生海报优化</option>
+                <option>小红书封面优化</option>
+                <option>朋友圈课程海报优化</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span>补充需求</span>
+            <textarea name="notes" rows="4" placeholder="例如：更高级一点、突出88元体验课、适合宝妈群体、不要太花哨"></textarea>
+          </label>
+
+          <label class="upload-box" for="imageInput">
+            <input id="imageInput" name="image" type="file" accept="image/png,image/jpeg,image/webp,image/gif" required />
+            <span>上传旧海报/课程图 <b>*</b></span>
+            <strong>点击选择图片</strong>
+            <small>支持 png / jpg / webp / gif，最大 10MB</small>
+          </label>
+
+          <div id="previewPanel" class="preview-panel" hidden>
+            <img id="sourcePreview" alt="待改稿图片预览" />
+            <button type="button" id="clearImageButton">重新选择</button>
+          </div>
+
+          <div class="notice">
+            <strong>注意：</strong>AI 会尽量保留原图主题并优化视觉，但不会凭空生成真实二维码、电话、资质或无法确认的承诺。
+          </div>
+
+          <button id="submitButton" class="submit-button" type="submit">开始免费改稿</button>
+          <p id="statusMessage" class="status-message" aria-live="polite">填写信息并上传图片后即可生成。</p>
+        </form>
+
+        <aside class="result-card" aria-labelledby="result-title">
+          <p class="eyebrow">Step 02</p>
+          <h2 id="result-title">生成结果</h2>
+          <div id="emptyResult" class="empty-result">
+            <span>图片将在这里显示</span>
+            <p>生成过程中请不要关闭页面。如果失败，可以把原图和需求发给睿睿人工改稿。</p>
+          </div>
+          <div id="loadingResult" class="loading-result" hidden>
+            <div class="spinner"></div>
+            <strong>正在生成招生海报...</strong>
+            <p>图生图通常需要 60-90 秒，我会保持页面等待。</p>
+          </div>
+          <div id="successResult" class="success-result" hidden>
+            <img id="resultImage" alt="AI改稿生成结果" />
+            <a id="downloadResult" class="download-button" href="#" download="ai-admission-poster.png">下载改稿图</a>
+          </div>
+          <div id="errorResult" class="error-result" hidden>
+            <strong>生成没有成功</strong>
+            <p id="errorText">请稍后再试，或联系睿睿人工改稿。</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="usage-section">
+        <article>
+          <h2>适合改什么图？</h2>
+          <p>旧招生海报、课程截图、课堂照片、公众号首图、小红书封面、朋友圈课程宣传图。</p>
+        </article>
+        <article>
+          <h2>生成后怎么用？</h2>
+          <p>把生成图发到小红书、朋友圈或视频号，再导回官网诊断表、获客选题清单或你的微信咨询。</p>
+        </article>
+        <article>
+          <h2>想继续优化？</h2>
+          <p>如果你想做一整套招生图文、官网入口和新媒体获客路径，可以把结果发给睿睿继续规划。</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="./image-editor.js"></script>
+  </body>
+</html>
