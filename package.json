@@ -1,0 +1,14 @@
+{
+  "name": "rui-growth-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/local-server.js",
+    "vercel:dev": "vercel dev",
+    "check": "node scripts/check-image-edit-api.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^34.3.0"
+  }
+}
